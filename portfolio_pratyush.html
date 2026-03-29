@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pratyush Poudel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --warm-bg: #F5F0E8;
+      --warm-surface: #EDE7D9;
+      --warm-card: #FAF7F2;
+      --warm-border: rgba(139,115,85,0.18);
+      --warm-accent: #8B6914;
+      --warm-accent2: #5C4A1E;
+      --warm-text: #2C2318;
+      --warm-muted: #7A6A52;
+      --warm-tag-text: #4A3A1E;
+      --nav-h: 56px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--warm-bg);
+      color: var(--warm-text);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(245,240,232,0.93);
+      backdrop-filter: blur(8px);
+      border-bottom: 0.5px solid var(--warm-border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem; z-index: 100;
+    }
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 600;
+      letter-spacing: 0.01em; color: var(--warm-accent2);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 13px; color: var(--warm-muted);
+      text-decoration: none; letter-spacing: 0.04em;
+      text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--warm-accent); }
+
+    /* ── LAYOUT ── */
+    main { padding-top: var(--nav-h); }
+    section { padding: 5rem 2.5rem; max-width: 820px; margin: 0 auto; }
+    hr.divider { border: none; border-top: 0.5px solid var(--warm-border); margin: 0 2.5rem; }
+
+    /* ── SECTION HEADERS ── */
+    .sec-label {
+      font-size: 10px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--warm-accent);
+      margin-bottom: 0.4rem;
+    }
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem; font-weight: 500;
+      color: var(--warm-accent2); margin-bottom: 2rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 5.5rem; padding-bottom: 4rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .hero-tag {
+      font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--warm-accent);
+      border: 0.5px solid var(--warm-accent);
+      display: inline-block; padding: 4px 12px;
+      border-radius: 2px; width: fit-content;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 500; line-height: 1.15; color: var(--warm-accent2);
+    }
+    .hero-sub {
+      font-size: 1.05rem; line-height: 1.75;
+      color: var(--warm-muted); font-weight: 300;
+      max-width: 560px; font-style: italic;
+    }
+    .hero-meta {
+      display: flex; gap: 1.5rem;
+      flex-wrap: wrap; align-items: center; margin-top: 0.5rem;
+    }
+    .hero-meta span {
+      font-size: 13px; color: var(--warm-muted);
+      display: flex; align-items: center; gap: 5px;
+    }
+    .hero-meta span::before {
+      content: ''; display: inline-block;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--warm-accent);
+    }
+    .btn-group { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 0.5rem; }
+    .btn-primary {
+      background: var(--warm-accent2); color: #F5F0E8;
+      font-size: 13px; padding: 10px 22px; border-radius: 3px;
+      border: none; cursor: pointer; font-family: inherit;
+      letter-spacing: 0.04em; text-decoration: none;
+      display: inline-block; transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-outline {
+      background: transparent; color: var(--warm-accent2);
+      font-size: 13px; padding: 10px 22px; border-radius: 3px;
+      border: 1px solid var(--warm-accent2); cursor: pointer;
+      font-family: inherit; letter-spacing: 0.04em;
+      text-decoration: none; display: inline-block; transition: opacity 0.2s;
+    }
+    .btn-outline:hover { opacity: 0.7; }
+
+    /* ── ABOUT ── */
+    .about-body {
+      font-size: 1rem; line-height: 1.9;
+      color: var(--warm-muted); font-weight: 300;
+    }
+    .about-body strong { color: var(--warm-text); font-weight: 400; }
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem; }
+    .skill-tag {
+      background: var(--warm-surface);
+      border: 0.5px solid var(--warm-border);
+      color: var(--warm-tag-text);
+      font-size: 12px; padding: 5px 13px;
+      border-radius: 2px; letter-spacing: 0.03em;
+    }
+
+    /* ── RESEARCH ── */
+    .research-card {
+      background: var(--warm-card);
+      border: 0.5px solid var(--warm-border);
+      border-left: 3px solid var(--warm-accent);
+      border-radius: 6px; padding: 1.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .research-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 500;
+      color: var(--warm-accent2); margin-bottom: 0.5rem;
+    }
+    .research-card p {
+      font-size: 0.9rem; line-height: 1.75;
+      color: var(--warm-muted); font-weight: 300;
+    }
+    .placeholder-note {
+      display: inline-block; margin-top: 0.75rem;
+      font-size: 11px; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--warm-accent); opacity: 0.7;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-item {
+      padding: 1.25rem 0;
+      border-bottom: 0.5px solid var(--warm-border);
+      display: flex; flex-direction: column; gap: 0.4rem;
+    }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-title { font-size: 0.95rem; font-weight: 400; color: var(--warm-text); line-height: 1.5; }
+    .pub-meta { font-size: 0.82rem; color: var(--warm-muted); font-style: italic; }
+    .pub-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+    .pub-tag {
+      background: var(--warm-surface); color: var(--warm-tag-text);
+      font-size: 11px; padding: 3px 9px; border-radius: 2px;
+    }
+    .pub-link {
+      font-size: 12px; color: var(--warm-accent);
+      text-decoration: none; letter-spacing: 0.03em;
+    }
+    .pub-link:hover { text-decoration: underline; }
+
+    /* ── PROJECTS ── */
+    .project-card {
+      background: var(--warm-card);
+      border: 0.5px solid var(--warm-border);
+      border-radius: 6px; padding: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 1rem;
+    }
+    .project-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 500;
+      color: var(--warm-accent2); margin-bottom: 0.4rem;
+    }
+    .project-card p {
+      font-size: 0.875rem; line-height: 1.7;
+      color: var(--warm-muted); font-weight: 300;
+    }
+    .project-tools {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.6rem;
+    }
+    .project-tool {
+      background: var(--warm-surface); color: var(--warm-tag-text);
+      font-size: 11px; padding: 3px 9px; border-radius: 2px;
+    }
+    .project-badge {
+      background: var(--warm-surface);
+      border: 0.5px solid var(--warm-border);
+      color: var(--warm-muted); font-size: 10px;
+      padding: 4px 10px; border-radius: 2px;
+      white-space: nowrap; letter-spacing: 0.05em;
+      text-transform: uppercase; flex-shrink: 0;
+    }
+
+    /* ── CV ── */
+    .cv-block {
+      background: var(--warm-surface); border-radius: 6px;
+      padding: 2rem; display: flex; flex-direction: column;
+      gap: 1.25rem; align-items: flex-start;
+    }
+    .cv-block p { font-size: 0.9rem; color: var(--warm-muted); line-height: 1.75; font-weight: 300; }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;
+    }
+    .contact-link {
+      background: var(--warm-card);
+      border: 0.5px solid var(--warm-border);
+      border-radius: 4px; padding: 0.75rem 1.25rem;
+      text-decoration: none; color: var(--warm-accent2);
+      font-size: 13px; letter-spacing: 0.03em;
+      transition: border-color 0.2s;
+    }
+    .contact-link:hover { border-color: var(--warm-accent); color: var(--warm-accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--warm-accent2); color: #E8DFC8;
+      text-align: center; padding: 2rem;
+      font-size: 13px; letter-spacing: 0.04em;
+    }
+    footer a { color: #C8B47A; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { gap: 1.2rem; }
+      section { padding: 3.5rem 1.25rem; }
+      hr.divider { margin: 0 1.25rem; }
+      .project-card { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav>
+    <a class="nav-name" href="#">Your Name</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#cv">CV</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="hero">
+      <span class="hero-tag">MTech Research · IISc Bangalore</span>
+      <h1>Power Systems<br>Researcher &amp; Engineer</h1>
+      <p class="hero-sub">
+        Exploring the frontiers of power electronics and energy systems —
+        from theory to implementation.
+      </p>
+      <div class="hero-meta">
+        <span>Electrical Engineering</span>
+        <span>Power Systems</span>
+        <span>IISc, Bengaluru</span>
+      </div>
+      <div class="btn-group">
+        <a class="btn-primary" href="#research">View Research</a>
+        <a class="btn-outline" href="#cv">Download CV</a>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ── ABOUT ── -->
+    <section id="about">
+      <p class="sec-label">Introduction</p>
+      <h2 class="sec-title">About Me</h2>
+      <p class="about-body">
+        I am an <strong>MTech (Research) student in Electrical Engineering at IISc Bangalore</strong>,
+        with a focus on power systems and power electronics. My research explores
+        [your research topic here] — motivated by the challenge of [brief motivation sentence].
+        I have recently submitted my thesis and am actively looking for opportunities in
+        [academia / industry / both].
+      </p>
+      <div class="skills-grid">
+        <!-- Add or remove skill tags as needed -->
+        <span class="skill-tag">Power Electronics</span>
+        <span class="skill-tag">MATLAB / Simulink</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Circuit Design</span>
+        <span class="skill-tag">Control Systems</span>
+        <span class="skill-tag">Add your tools...</span>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ── RESEARCH ── -->
+    <section id="research">
+      <p class="sec-label">Thesis Work</p>
+      <h2 class="sec-title">Research</h2>
+
+      <div class="research-card">
+        <h3>Your Thesis Title Goes Here</h3>
+        <p>
+          A concise summary of your thesis — the problem you tackled, the approach you took,
+          and the key findings or contributions. This is your flagship work, so give it the
+          space it deserves. 2–4 sentences works well here.
+        </p>
+        <span class="placeholder-note">· Thesis submitted, under review</span>
+      </div>
+
+      <div class="research-card">
+        <h3>Research Area / Secondary Work</h3>
+        <p>
+          Any related research work, lab contributions, or ongoing studies can go here.
+          Placeholder — fill in once you're ready.
+        </p>
+        <span class="placeholder-note">· Coming soon</span>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ── PUBLICATIONS ── -->
+    <section id="publications">
+      <p class="sec-label">Academic Output</p>
+      <h2 class="sec-title">Publications</h2>
+
+      <div class="pub-item">
+        <p class="pub-title">Title of your paper or conference publication goes here</p>
+        <p class="pub-meta">Your Name, Co-author(s) · Conference / Journal Name, Year</p>
+        <div class="pub-tags">
+          <span class="pub-tag">IEEE</span>
+          <span class="pub-tag">Power Systems</span>
+        </div>
+        <!-- Uncomment and update when you have a link:
+        <a class="pub-link" href="https://doi.org/..." target="_blank">View paper →</a>
+        -->
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-title">Second publication or preprint title</p>
+        <p class="pub-meta">Your Name, Co-author(s) · Venue, Year</p>
+        <div class="pub-tags">
+          <span class="pub-tag">arXiv</span>
+          <span class="pub-tag">Under review</span>
+        </div>
+      </div>
+
+      <div class="pub-item" style="opacity:0.45; font-style:italic;">
+        <p class="pub-title">More publications coming soon...</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ── PROJECTS ── -->
+    <section id="projects">
+      <p class="sec-label">Course &amp; Side Work</p>
+      <h2 class="sec-title">Projects</h2>
+
+      <!-- Duplicate this block for each project -->
+      <div class="project-card">
+        <div>
+          <h3>Project Title — Course Name</h3>
+          <p>
+            Brief description of the problem, your approach, and the outcome.
+            You can describe methodology and results even without code.
+            Fill in your details here.
+          </p>
+          <div class="project-tools">
+            <span class="project-tool">MATLAB</span>
+            <span class="project-tool">Python</span>
+          </div>
+        </div>
+        <span class="project-badge">Code coming soon</span>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <h3>Project Title — Course Name</h3>
+          <p>
+            Brief description of the project. Placeholder — fill in your details.
+          </p>
+          <div class="project-tools">
+            <span class="project-tool">Simulink</span>
+          </div>
+        </div>
+        <span class="project-badge">Code coming soon</span>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <h3>Project Title — Course Name</h3>
+          <p>Another course project placeholder. Add as many cards as you need.</p>
+          <div class="project-tools">
+            <span class="project-tool">Add tools...</span>
+          </div>
+        </div>
+        <span class="project-badge">Code coming soon</span>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ── CV ── -->
+    <section id="cv">
+      <p class="sec-label">Résumé</p>
+      <h2 class="sec-title">Curriculum Vitae</h2>
+      <div class="cv-block">
+        <p>
+          My CV includes my educational background, research experience, publications,
+          technical skills, and academic achievements. Download it below for the full details.
+        </p>
+        <!-- Replace href with the actual path to your CV PDF -->
+        <a class="btn-primary" href="cv.pdf" download>Download CV (PDF)</a>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ── CONTACT ── -->
+    <section id="contact">
+      <p class="sec-label">Get in Touch</p>
+      <h2 class="sec-title">Contact</h2>
+      <p style="font-size:0.95rem; color:var(--warm-muted); font-weight:300; margin-bottom:1.5rem;">
+        Feel free to reach out for research collaborations, opportunities, or just to connect.
+      </p>
+      <div class="contact-grid">
+        <a class="contact-link" href="mailto:yourname@iisc.ac.in">yourname@iisc.ac.in</a>
+        <a class="contact-link" href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+        <a class="contact-link" href="https://github.com/yourusername" target="_blank">GitHub</a>
+        <!-- Add Google Scholar, ResearchGate, etc. if you have them -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>Your Name · <a href="mailto:yourname@iisc.ac.in">yourname@iisc.ac.in</a></p>
+    <p style="margin-top:8px; opacity:0.5; font-size:11px;">IISc Bangalore · Electrical Engineering</p>
+  </footer>
+
+</body>
+</html>
